@@ -6,15 +6,22 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Ajouter un paiement</title>
     <link rel="stylesheet" href="{{ asset('assets/bootstrap/bootstrap.min.css') }}">
+    <style>
+       @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+*{
+    font-family: 'poppins', 'sans-serif';
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+    </style>
 </head>
 <body>
     @extends('layouts.template')
     @section('content')
 
     <div class="container mt-5">
-        <a href="{{ route('dashboard') }}"><i class="fa fa-arrow-left" style="margin-right:2500px"></i></a>
-        <br><br>
-        <h2 class="page-title" style="color:#051946; font-family:poppins;margin-left:350px">AJOUTER UN PAIEMENT</h2>
+        <h2 class="page-title" style="color:#227BFF; font-family:poppins;margin-left:350px">AJOUTER UN PAIEMENT</h2>
         <hr>
 
         @if ($errors->any())

@@ -30,5 +30,16 @@ class Employe extends Model
     {
         return $this->hasMany(Absence::class);
     }
+
+    public function departement()
+    {
+        return $this->belongsTo(Departement::class);
+    }
+
+    public function project()
+{
+    return $this->belongsTo(Project::class);
+}
+
    
 }

@@ -19,6 +19,16 @@
 
     <!-- Custom styles for this template-->
     <link href="{{asset('assets/css/sb-admin-2.min.css')}}" rel="stylesheet">
+    <style>
+       @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+*{
+    font-family: 'poppins', 'sans-serif';
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+    </style>
 
 </head>
 
@@ -69,6 +79,8 @@
     <!-- Page level custom scripts -->
     <script src="{{asset('assets/js/demo/chart-area-demo.js')}}"></script>
     <script src="{{asset('assets/js/demo/chart-pie-demo.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 
 </body>
 

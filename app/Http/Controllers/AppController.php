@@ -5,44 +5,69 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Employe;
 use App\Models\Configuration;
+use App\Models\Project;
+use App\Models\Payment;
+use Illuminate\Support\Facades\DB;
+
+
 use Carbon\Carbon;
 
 class AppController extends Controller
 {
     public function index()
-    {
-        // Récupérer le nombre total d'employés
-        $totalEmployes = Employe::count();
+{
+    // Récupérer le nombre total d'employés
+    $totalEmployes = Employe::count();
 
-        // Initialiser la variable $paymentNotification à une chaîne vide pour éviter l'erreur
-        $paymentNotification = "";
+    // Récupérer tous les projets terminés
+    $totalProjects = Project::where('is_completed', true)->count();
+    $totalProjectPrice = floatval(Project::where('is_completed', true)->sum('price')); // Montant total des projets
 
-        // Récupérer la date actuelle
-        $currentDate = Carbon::now()->day;
 
-        // Récupérer la configuration de la date de paiement
-        $defaultPaymentDateQuery = Configuration::where('type', 'PAYMENT_DATE')->first();
+    $currentMonthPayments = Payment::whereMonth('paid_at', now()->month)
+                                    ->whereYear('paid_at', now()->year)
+                                    ->sum('amount');
 
-        if ($defaultPaymentDateQuery) {
-            $defaultPaymentDate = $defaultPaymentDateQuery->value;
-            $convertedPaymentDate = intval($defaultPaymentDate);
 
-            // Si la date de paiement est future, générer la notification pour ce mois
-            if ($currentDate < $convertedPaymentDate) {
-                $currentMonthName = Carbon::now()->translatedFormat('F'); // Mois actuel en français
+    $remainingProjectPrice = $totalProjectPrice - $currentMonthPayments;
 
-                $paymentNotification = "Le paiement doit avoir lieu le " . $defaultPaymentDate . " de ce mois de " . $currentMonthName . ".";
-            } 
-            // Si la date de paiement est passée, générer la notification pour le mois suivant
-            else {
-                $nextMonth = Carbon::now()->addMonth();
-                $nextMonthName = $nextMonth->translatedFormat('F'); // Mois suivant en français
 
-                $paymentNotification = "Le paiement doit avoir lieu le " . $defaultPaymentDate . " du mois de " . $nextMonthName . ".";
-            }
+    $currentMonth = Carbon::now()->month;
+    $currentYear = Carbon::now()->year;
+    $sum = DB::table('payments')
+            ->whereMonth('created_at', $currentMonth)
+            ->whereYear('created_at', $currentYear)
+            ->sum('amount');
+   
+    // Initialiser la notification de paiement
+    $paymentNotification = "";
+
+    // Récupérer la date actuelle
+    $currentDate = Carbon::now()->day;
+
+    // Récupérer la configuration de la date de paiement
+    $defaultPaymentDateQuery = Configuration::where('type', 'PAYMENT_DATE')->first();
+
+    if ($defaultPaymentDateQuery) {
+        $defaultPaymentDate = intval($defaultPaymentDateQuery->value);
+
+        // Vérifier si la date de paiement est future ou passée
+        if ($currentDate < $defaultPaymentDate) {
+            $currentMonthName = Carbon::now()->translatedFormat('F'); // Mois actuel en français
+            $paymentNotification = "Le paiement doit avoir lieu le " . $defaultPaymentDate . " de ce mois de " . $currentMonthName . ".";
+        } else {
+            $nextMonth = Carbon::now()->addMonth();
+            $nextMonthName = $nextMonth->translatedFormat('F'); // Mois suivant en français
+            $paymentNotification = "Le paiement doit avoir lieu le " . $defaultPaymentDate . " du mois de " . $nextMonthName . ".";
         }
-
-        // Passer les variables à la vue
-        return view('dashboard', compact('totalEmployes', 'paymentNotification'));
+    } else {
+        // Gérer le cas où la configuration n'est pas trouvée
+        $paymentNotification = "Configuration de la date de paiement non trouvée.";
     }
+
+    // Passer les variables à la vue
+    return view('dashboard', compact('totalEmployes','sum', 'currentMonth', 'currentYear', 'totalProjects', 'paymentNotification', 'remainingProjectPrice', 'currentMonthPayments'));
+}
+
+
 }

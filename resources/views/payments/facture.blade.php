@@ -6,31 +6,38 @@
     <title>Fiche de paie</title>
     <link rel="stylesheet" href="{{asset('assets/bootstrap/bootstrap.min.css')}}">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+*{
+    font-family: 'poppins', 'sans-serif';
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
         body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 20px;
-    background-color: #2c3e50; /* Fond sombre */
-    color: white; /* Couleur de texte blanche */
+    background-color: #2c3e50; 
+    color: white;
 }
 
 .container {
     max-width: 800px;
     margin: auto;
-    background: #34495e; /* Fond légèrement plus clair */
-    border: none; /* Pas de bordure */
-    border-radius: 10px; /* Bords arrondis */
-    padding: 40px; /* Espacement intérieur */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Ombre plus marquée */
+    background: #34495e; 
+    border: none; 
+    border-radius: 10px; 
+    padding: 40px; 
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); 
 }
 
 .text-center {
-    margin-bottom: 20px; /* Espacement en bas */
+    margin-bottom: 20px; 
 }
 
 .font-monospace {
-    font-size: 28px; /* Taille de la police pour le titre */
-    font-weight: bold; /* Gras */
+    font-size: 28px; 
+    font-weight: bold; 
 }
 
 .transaction-box {
@@ -65,15 +72,15 @@
 }
 
 table {
-    width: 100%; /* Prendre toute la largeur */
-    border-collapse: collapse; /* Éliminer les espaces entre les bordures */
-    margin-top: 20px; /* Espacement en haut */
+    width: 100%; 
+    border-collapse: collapse; 
+    margin-top: 20px;/
 }
 
 table th, table td {
-    padding: 12px; /* Espacement intérieur des cellules */
-    text-align: left; /* Alignement à gauche */
-    border: 1px solid #7f8c8d; /* Bordure gris foncé */
+    padding: 12px; 
+    text-align: left; 
+    border: 1px solid #7f8c8d; 
 }
 
 table thead {
@@ -101,6 +108,7 @@ table thead {
    
 <body>
     <div class="container">
+        
         <div class="text-center">
             <b class="font-monospace">Facture de paiement</b>
         </div>

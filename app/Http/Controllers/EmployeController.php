@@ -35,6 +35,8 @@ class EmployeController extends Controller
         $employe->poste = $request->poste;
         $employe->departement = $request->departement;
         $employe->telephone = $request->telephone;
+        $employe->salary = $request->salary ?? 0; 
+
         $employe->save();
 
         // Ajouter l'adresse de l'employé
@@ -63,6 +65,7 @@ class EmployeController extends Controller
             'poste' => 'required',
             'departement' => 'required',
             'telephone' => 'required',
+            
             'rue' => 'required',
             'ville' => 'required',
             'code_postal' => 'required',
@@ -96,7 +99,7 @@ class EmployeController extends Controller
 
     }
     
-    public function search(Request $request)
+    /*public function search(Request $request)
 {
     $query = $request->input('query');
 
@@ -112,7 +115,10 @@ class EmployeController extends Controller
         ->paginate(10);
 
     return view('employe.liste', compact('employes'));
-}
+}*/
+
+
+
 
     
 }

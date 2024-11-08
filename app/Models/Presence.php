@@ -16,7 +16,10 @@ class Presence extends Model
         'motif'
     ];
 
-    public function employe() {
-        return $this->belongsTo(Employe::class);
+    // Dans le modèle Presence.php
+    public function employe()
+    {
+        return $this->belongsTo(Employe::class, 'employe_id');
     }
+
 }

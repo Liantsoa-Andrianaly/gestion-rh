@@ -1,8 +1,8 @@
-/* General Styles */
+/* General Styles 
 body {
     margin: 0;
     font-family: 'Figtree', sans-serif;
-    background-image: url('/img/design3.jpg');
+    background-color: rgb(0, 37, 105);
     color: #333;
     overflow: hidden;
 }
@@ -43,8 +43,8 @@ header {
 }
 
 .menu a:hover {
-    color: darkgoldenrod;
-}/* Container Text Styling */
+    color: #b8860b;
+}/* Container Text Styling 
 
 .container {
     display: flex;
@@ -52,67 +52,98 @@ header {
     align-items: center;
     height: 100vh;
 }
-
+.container-welcome {
+    text-align: center;
+    background-color: #051946;
+    padding: 3rem;
+    border-radius: 15px;
+    color: white;
+    width: 50%; /* Adjust width 
+    
+}
+.container-register {
+    text-align: center;
+    background-color: #051946;
+    padding: 2rem;
+    border-radius: 15px;
+    color: white;
+    width: 50%; /* Adjust width 
+    height: 60vh;
+}
 .container-text {
     text-align: center;
     background-color: #051946;
     padding: 3rem;
     border-radius: 15px;
     color: white;
-    width: 50%; /* Adjust width */
+    width: 50%; /* Adjust width 
+    height: 64vh;
 }
-
-/* Headings */
+.container-form {
+    text-align: center;
+    background-color: #051946;
+    padding: 50px;
+    border-radius: 15px;
+    color: white;
+    width: 45%; /* Adjust width 
+    height: 64vh;
+}
+/* Headings 
 h1, h2 {
     margin: 0;
     padding:0;
     font-family: 'Poppins', sans-serif;
 }
 
-/* Responsive styles for headings */
+/* Responsive styles for headings 
 h1 {
-    font-size: 2.5rem; /* Large screen size */
+    font-size: 2.5rem; /* Large screen size 
 }
 
 h2 {
-    font-size: 1.5rem; /* Large screen size */
+    font-size: 1.5rem; /* Large screen size 
 }
 
-/* Media queries for smaller screens */
+/* Media queries for smaller screens 
 @media (max-width: 768px) {
     h1 {
-        font-size: 2rem; /* Medium screen size */
+        font-size: 2rem; /* Medium screen size 
     }
 
     h2 {
-        font-size: 1.2rem; /* Medium screen size */
+        font-size: 1.2rem; /* Medium screen size 
     }
 
     .logo img {
-        max-width: 120px; /* Reduce logo size on smaller screens */
+        max-width: 120px; /* Reduce logo size on smaller screens 
     }
 
     .menu a {
-        font-size: 0.9rem; /* Smaller font for menu links */
+        font-size: 0.9rem; /* Smaller font for menu links 
     }
 }
 
 @media (max-width: 480px) {
     h1 {
-        font-size: 1.5rem; /* Small screen size */
+        font-size: 1.5rem; /* Small screen size 
     }
 
     h2 {
-        font-size: 1rem; /* Small screen size */
+        font-size: 1rem; /* Small screen size 
     }
 
     .container-text {
-        width: 100%; /* Full width on smaller screens */
+        width: 100%; /* Full width on smaller screens 
+        padding: 1.5rem;
+    }
+    .container-form {
+        width: 100%;
+        height: 500px;
         padding: 1.5rem;
     }
 
     .menu {
-        flex-direction: column; /* Stack menu items vertically */
+        flex-direction: column; /* Stack menu items vertically 
     }
 
     .menu li {
@@ -124,11 +155,11 @@ h2 {
     }
 
     .logo img {
-        max-width: 100px; /* Further reduce logo size */
+        max-width: 100px; /* Further reduce logo size 
     }
 }
 
-/* Link Styling */
+/* Link Styling 
 a {
     color: darkgoldenrod;
     text-decoration: none;
@@ -137,3 +168,5 @@ a {
 a:hover {
     text-decoration: underline;
 }
+
+
